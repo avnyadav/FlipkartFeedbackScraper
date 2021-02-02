@@ -32,10 +32,10 @@ def feedback(product_name):
             name = prod_html.find_all('p', {'class': '_2sc7ZR _2V5EHH _1QgsS5'})
             product_name = prod_html.find_all('div', {'class': '_2s4DIt _1PEOhe'})[0].text
             page_no = prod_html.find_all('div', {'class': '_2MImiq _1Qnn1K'})
-            if len(page_no) > 0 and isPageNoCalculated == False:
-                page_detail = page_no[0].span.text
-                loop_time = int(page_detail[page_detail.index("of ") + 3:])
-                isPageNoCalculated = True
+            #if len(page_no) > 0 and isPageNoCalculated == False:
+            #    page_detail = page_no[0].span.text
+            #    loop_time = int(page_detail[page_detail.index("of ") + 3:])
+             #   isPageNoCalculated = True
             for r in range(0, min([len(res), len(rating)])):
                 response.append(
                     {"rating": rating[r].text, "comment": res[r].text, "name": name[r].text, "product Name": product_name,
