@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" >
+{% extends 'base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>Review Page</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+{% block head %}
 
 
-      <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<title>Feedback result</title>
+{% endblock %}
+
+{% block body %}
+
+  <div class="col-md-10 offset-md-1">
 
 
-</head>
-
-<body>
-
-  <div class="table-users">
-   <div class="header">Reviews</div>
-
-   <table cellspacing="0">
+   <table class="table table-striped .table-bordered" cellspacing="0">
       <tr>
          <th>Product Name</th>
          <th>Reviewer Name</th>
@@ -38,8 +30,4 @@
    </table>
 </div>
 
-
-
-</body>
-
-</html>
+{% endblock %}
