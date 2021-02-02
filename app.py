@@ -13,16 +13,22 @@ app = Flask(__name__)  # initialising the flask app with the name 'app'
 
 
 
-
 @app.route('/',methods=['POST','GET']) # route with allowed methods as POST and GET
 def index():
     if request.method == 'POST':
         searchString = request.form['content'].replace(" ","") # obtaining the search string entered in the form
         try:
+
             return render_template('results.html', reviews=feedback(searchString)) # showing the review to the user
         except Exception as e:
             return render_template('index.html',msg={'msg':str(e)})
     else:
         return render_template('index.html',msg={'msg':None})
+
+
+@app.route('/feedback',methods=['GET'])
+def getFeedback():
+    name=request.args.get("name")
+    return jsonify(feedback(name))
 if __name__ == "__main__":
     app.run(port=8000,debug=True) # running the app on the local machine on port 8000

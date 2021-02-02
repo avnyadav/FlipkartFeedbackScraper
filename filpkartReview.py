@@ -17,7 +17,7 @@ def getMaxClass(dictionary):
     for d in dictionary.keys():
 
         if maximum < dictionary[d]:
-            print(dictionary[d])
+            #print(dictionary[d])
             maximum = dictionary[d]
             name = d
     return name
