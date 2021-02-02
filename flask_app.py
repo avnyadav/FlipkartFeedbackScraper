@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen as uReq
 from filpkartReview import feedback
-import pymongo
+
 
 app = Flask(__name__)  # initialising the flask app with the name 'app'
 
