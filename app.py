@@ -1,4 +1,5 @@
 # doing necessary imports
+import sys
 
 from flask import Flask, render_template, request,jsonify
 # from flask_cors import CORS,cross_origin
@@ -75,7 +76,8 @@ def index():
                     reviews.append(mydict) #  appending the comments to the review list'''
             return render_template('results.html', reviews=feedback(searchString)) # showing the review to the user
         except Exception as e:
-            return 'something is wrong'+str(e)
+            return e
+
             #return render_template('results.html')
     else:
         return render_template('index.html')
