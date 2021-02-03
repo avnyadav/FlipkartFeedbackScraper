@@ -2,8 +2,8 @@
 
 import pymongo
 
-DB_URL = 'mongodb://localhost:27017/'#'mongodb+srv://Avnish:<Aa327030>@cluster0.5fvxl.mongodb.net/<dbname>?retryWrites=true&w=majority'
-#DB_URL='mongodb+srv://Avnish:Aa327030@cluster0.5fvxl.mongodb.net/<dbname>?retryWrites=true&w=majority'
+#DB_URL = 'mongodb://localhost:27017/'#'mongodb+srv://Avnish:<Aa327030>@cluster0.5fvxl.mongodb.net/<dbname>?retryWrites=true&w=majority'
+DB_URL='mongodb+srv://Avnish:Aa327030@cluster0.5fvxl.mongodb.net/<dbname>?retryWrites=true&w=majority'
 def getDatabaseClientObject():
     try:
         client = pymongo.MongoClient(DB_URL)
