@@ -20,7 +20,7 @@
          <th>Search Product</th>
          <th width="230">Comments</th>
       </tr>
-         {% for review in reviews %}
+         {% for review in reviews['reviews'] %}
       <tr>
            <td>{{ loop.index }} </td>
           <td>{{review['product Name']}}</td>

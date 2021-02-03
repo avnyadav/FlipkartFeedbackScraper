@@ -40,6 +40,21 @@
         </div>
 </div>
 <div class="row">
+    <div class="col-md-10 offset-md-1">
+    {% if reviews['msg']=='OK' %}
+<div class="alert alert-success" role="alert">
+ Success Message: {{ reviews['msg'] }}
+</div></div>
+{% else %}
+        <div class="col-md-10 offset-md-1">
+    {% if reviews['msg']!=None %}
+<div class="alert alert-danger" role="alert">
+ Error Message: {{ reviews['msg'] }}
+</div></div>
+
+{% endif %}
+
+    {% endif %}
     {% block body %}
     {% endblock %}
     </div>

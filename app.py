@@ -20,11 +20,11 @@ def index():
         searchString = request.form['content'].replace(" ","") # obtaining the search string entered in the form
         try:
 
-            return render_template('results.html', reviews=feedback(searchString)) # showing the review to the user
+            return render_template('results.html', reviews={'reviews':feedback(searchString),'msg':"OK"}) # showing the review to the user
         except Exception as e:
-            return render_template('index.html',msg={'msg':str(e)})
+            return render_template('results.html', reviews={'reviews':feedback(searchString),'msg':str(e)})
     else:
-        return render_template('index.html',msg={'msg':None})
+        return render_template('index.html',reviews={'msg':None})
 
 
 @app.route('/feedback',methods=['GET'])
