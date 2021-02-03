@@ -13,6 +13,7 @@
 
    <table class="table table-striped .table-bordered" cellspacing="0">
       <tr>
+           <th>Srno.</th>
          <th>Product Name</th>
          <th>Reviewer Name</th>
          <th>Rating</th>
@@ -21,6 +22,7 @@
       </tr>
          {% for review in reviews %}
       <tr>
+           <td>{{ loop.index }} </td>
           <td>{{review['product Name']}}</td>
          <td>{{review['name']}}</td>
          <td>{{review['rating']}}</td>

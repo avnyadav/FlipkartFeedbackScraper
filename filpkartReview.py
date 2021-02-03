@@ -1,7 +1,7 @@
 import  requests
 from bs4 import BeautifulSoup as bs
 from urllib.request import  urlopen as ureq
-
+from dbfile import getDataFromCollection,addDatatoColleciton
 searchString=""
 
 def checkClass(txt):
@@ -123,6 +123,7 @@ def getFeebackofProduct(url):
                 feedback.append(
                     {"rating": rating[r].text, "comment": res[r].text, "name": name[r].text, "product Name": product_name,
                     "product searched": searchString})
+        addDatatoColleciton(feedback)
         return feedback
     except Exception as e:
         raise Exception("Error in getFeebackofProduct method---->"+str(e))
@@ -132,12 +133,21 @@ def feedback(product_name):
     try:
         global searchString
         searchString=product_name
-        flipkart_url = "https://www.flipkart.com/search?q=" + product_name
-        flipkart_page = getFLipkartpage(flipkart_url)
-        flipkart_html = bs(flipkart_page, "html.parser")
-        bigboxes = getBigBoxes(flipkart_html)
-        urls = generateURLForProduct(bigboxes)
-        return getFeebackofProduct(urls[0])
+        if getDataFromCollection(product_name)==False:
+            flipkart_url = "https://www.flipkart.com/search?q=" + product_name
+            flipkart_page = getFLipkartpage(flipkart_url)
+            flipkart_html = bs(flipkart_page, "html.parser")
+            bigboxes = getBigBoxes(flipkart_html)
+            urls = generateURLForProduct(bigboxes)
+            result=[]
+            for url in urls:
+                result=result+getFeebackofProduct(url)
+                if len(result)>50:
+                    break
+            return result
+        else:
+            return getDataFromCollection(product_name)
+
     except Exception as e:
         raise Exception("Error in feedback method  --->"+str(e))
 
