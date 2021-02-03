@@ -111,6 +111,7 @@ def addDatatoColleciton(data):
         db_name = createDatabase(client, "flipkart")
         collection = getCollection("flipkartproduct", db_name)
         createMutlipleRows(collection,data)
+        client.close()
         return True
     except Exception as e:
         raise Exception("Failed to fetch detail from collection", str(e))
@@ -140,6 +141,7 @@ def getDataFromCollection(search_product):
         if res.count() > 0:
             for r in res:
                 data.append(r)
+            client.close()
             return data
         else:
             return False
