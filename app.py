@@ -1,12 +1,13 @@
 # doing necessary imports
 import sys
 
-from flask import Flask, render_template, request,jsonify
+from flask import Flask, render_template, request,jsonify,json
 # from flask_cors import CORS,cross_origin
 import requests
 from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen as uReq
 from filpkartReview import feedback
+from dbfile import getDataFromCollection
 
 
 app = Flask(__name__)  # initialising the flask app with the name 'app'
@@ -30,5 +31,7 @@ def index():
 def getFeedback():
     name=request.args.get("name")
     return jsonify(feedback(name))
+
+
 if __name__ == "__main__":
     app.run(port=8000,debug=True) # running the app on the local machine on port 8000

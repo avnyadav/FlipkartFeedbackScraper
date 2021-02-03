@@ -115,8 +115,7 @@ def getFeebackofProduct(url):
                 page_detail = page_no[0].span.text
                 loop_time = int(page_detail[page_detail.index("of ") + 3:])
                 isPageNoCalculated = True
-                if loop_time > 10:
-                    loop_time = 10
+
 
 
             for r in range(0, min([len(res), len(rating)])):
@@ -142,8 +141,8 @@ def feedback(product_name):
             result=[]
             for url in urls:
                 result=result+getFeebackofProduct(url)
-                if len(result)>50:
-                    break
+                #if len(result)>50:
+                #    break
             return result
         else:
             return getDataFromCollection(product_name)
