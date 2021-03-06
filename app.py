@@ -19,7 +19,6 @@ def index():
     if request.method == 'POST':
         searchString = request.form['content'].replace(" ","") # obtaining the search string entered in the form
         try:
-
             return render_template('results.html', reviews={'reviews':feedback(searchString),'msg':"OK"}) # showing the review to the user
         except Exception as e:
             return render_template('results.html', reviews={'reviews':feedback(searchString),'msg':str(e)})

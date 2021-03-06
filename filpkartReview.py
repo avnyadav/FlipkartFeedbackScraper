@@ -116,14 +116,19 @@ def getFeebackofProduct(url):
                 loop_time = int(page_detail[page_detail.index("of ") + 3:])
                 isPageNoCalculated = True
                 if loop_time > 10:
-                    loop_time = 10
+                    loop_time = loop_time
 
-
+            feedback=[]
             for r in range(0, min([len(res), len(rating)])):
+                print(r)
                 feedback.append(
                     {"rating": rating[r].text, "comment": res[r].text, "name": name[r].text, "product Name": product_name,
                     "product searched": searchString})
-        addDatatoColleciton(feedback)
+                print(feedback)
+
+            if len(feedback)>0:
+                addDatatoColleciton(feedback)
+                #print(feedback)
         return feedback
     except Exception as e:
         raise Exception("Error in getFeebackofProduct method---->"+str(e))
@@ -142,8 +147,7 @@ def feedback(product_name):
             result=[]
             for url in urls:
                 result=result+getFeebackofProduct(url)
-                if len(result)>50:
-                    break
+
             return result
         else:
             return getDataFromCollection(product_name)
